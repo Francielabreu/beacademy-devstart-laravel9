@@ -1,5 +1,5 @@
 @extends('template.users')
-@section('title', 'Visualizar Usuario')
+@section('title', $title)
 
 @section('content')
 
