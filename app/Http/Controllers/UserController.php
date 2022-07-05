@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    public function __construct(User $user)
+    {
+        $this->model = $user;
+    }
+
     public function index()
     {
         $users =User::all();
@@ -46,7 +51,7 @@ class UserController extends Controller
     {
         if(!$user = $this->model->find($id))
             return redirect()->route('users.index');
-        return view('users.edit', compact('$user'));
+        return view('users.edit', compact('user'));
 
     }
 
