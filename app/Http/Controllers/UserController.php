@@ -19,8 +19,26 @@ class UserController extends Controller
 
         if (!$user = User::find($id))
            return redirect()->route('users.index');
-        
+
+           $title ='Usúario '.$user->name;
        
-        return view('users.show', compact('user'));
+        return view('users.show', compact('user','title'));
+    }
+
+    public function create()
+    {
+        //dd('CREATE_');
+        return view('users.create');
+    }
+
+    public function store(Request $request)
+    {
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->save();
+
+        return redirect()->route('users.index');
     }
 }
