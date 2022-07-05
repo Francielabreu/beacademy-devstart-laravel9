@@ -55,8 +55,13 @@ class UserController extends Controller
 
     }
 
-    public function update()
+    public function update(Request $request, $id)
     {
-        # code...
+        if(!$user = $this->model->find($id))
+        return redirect()->route('users.index');
+    
+        $data = $request->only('name','email');
+        $user->update($data);
+        return redirect()->route('users.index');
     }
 }
