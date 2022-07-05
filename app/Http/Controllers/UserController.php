@@ -27,7 +27,7 @@ class UserController extends Controller
 
     public function create()
     {
-        //dd('CREATE_');
+        
         return view('users.create');
     }
 
@@ -40,5 +40,18 @@ class UserController extends Controller
         $user->save();
 
         return redirect()->route('users.index');
+    }
+
+    public function edit($id)
+    {
+        if(!$user = $this->model->find($id))
+            return redirect()->route('users.index');
+        return view('users.edit', compact('$user'));
+
+    }
+
+    public function update()
+    {
+        # code...
     }
 }
