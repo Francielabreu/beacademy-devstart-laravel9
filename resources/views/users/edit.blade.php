@@ -4,6 +4,15 @@
 
 @section('content')
     <h1>Alterar Usuario {{ $user->name }}</h1>
+    @if ($errors->any())
+
+    <div class="alert alert-danger" role="alert">
+        @foreach ($errors->all() as $error)
+            {{ $error }}<br>
+        @endforeach
+    </div>
+
+@endif
 
     <form action="{{ route('users.update', $user->id) }}" method="POST">
         @method('PUT')
@@ -13,7 +22,7 @@
             
             <div class="mb-3">
                 <label for="name" class="form-label">Nome</label>
-                <input type="text" id="name" name="name" class="form-control" placeholder="Informe seu nome" value="{{ $user->name }}">
+                <input type="text" id="name" name="name" class="form-control" placeholder="Informe seu nome"  value="{{ $user->name }}">
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
