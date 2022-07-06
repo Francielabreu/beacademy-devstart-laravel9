@@ -14,7 +14,8 @@
                 <th scope="col">NOME</th>
                 <th scope="col">EMAIL</th>
                 <th scope="col">DATA CADASTRO</th>
-                <th scope="col" class="text-center">AÇÕES</th>
+                <th scope="col" class="text-center">VISUALIZAR</th>
+                <th scope="col" class="">EXCLUIR</th>
             </tr>
         </thead>
         <tbody>
@@ -25,7 +26,16 @@
                 <td>{{ date('d/m/Y - H:i', strtotime($user->created_at)) }}</td>
                 <td class="text-center">
                     <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning btn-sm">Editar</a>
-                    <a href="" class="btn btn-danger btn-sm">Excluir</a>
+                </td>
+                <td>
+
+                    <form action="{{ route('users.destroy', $user->id) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger btn-sm" type="submit">Excluir</button>
+
+
+                    </form>
 
                 </td>
             </tr>
