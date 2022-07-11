@@ -6,8 +6,8 @@
 
     <h1>Listagem de Usuarios</h1>
     <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm mb-3">Novo Cadastro</a>
-
-    <table class="table table-dark table-striped table-hover">
+    
+    <table class="table table-light table-striped table-hover">
         <thead>
             <tr>
                 <th scope="col">#ID</th>
