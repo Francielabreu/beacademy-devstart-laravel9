@@ -32,6 +32,7 @@ class StoreUpdateUserFormRequest extends FormRequest
             'email',
             'unique:users,email,{id},id',
            ],
+           'image' => ['file'],
         ];
     }
 }
