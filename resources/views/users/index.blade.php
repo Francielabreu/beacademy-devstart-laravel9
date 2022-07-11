@@ -11,6 +11,7 @@
         <thead>
             <tr>
                 <th scope="col">#ID</th>
+                <th scope="col">FOTO</th>
                 <th scope="col">NOME</th>
                 <th scope="col">EMAIL</th>
                 <th scope="col">DATA CADASTRO</th>
@@ -21,6 +22,12 @@
             @foreach ($users as $user)
                 <tr>
                     <th scope="row">{{ $user->id }}</th>
+                    @if($user->image)
+                    <th><img src="{{ asset('storage/'.$user->image) }}" width="60px" height="60px"></th>
+                    @else
+                    <th><img src="{{ asset('storage/profile/avatar.jpg') }}" width="60px" height="60px"></th>
+                    @endif
+
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ date('d/m/Y - H:i', strtotime($user->created_at)) }}</td>
@@ -34,5 +41,9 @@
 
         </tbody>
     </table>
+<div class="justify-content-center pagination color-black">
+    {{ $users->links('pagination::bootstrap-4') }}
+</div>
+    
 
 @endsection
