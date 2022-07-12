@@ -7,6 +7,7 @@ use App\Http\Controllers\ViaCepController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+Route::get('/users/{id}/posts', [PostController::class, 'show'])->name('posts.show');
 
 Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
 Route::post('/users',[UserController::class, 'store'])->name('users.store');
