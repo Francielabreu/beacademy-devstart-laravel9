@@ -19,12 +19,18 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts =Post::paginate(3);
-       // if (!$user = $this->user->find($userId)) {
-          //  return redirect()->back();
-       // }
+        
+       
         $posts = $this->post->all();
 
         return view('posts.index', compact('posts'));
+    }
+    public function show($userId)
+    {
+        if (!$user = $this->user->find($userId))
+            return redirect()->back();
+
+        $posts = $user->posts()->get();
+         return view('posts.show',compact('user', 'posts'));
     }
 }
